@@ -1,0 +1,32 @@
+cabal-version:      3.0
+name:               bidirectional-instances
+version:            0.1.0.0
+synopsis:
+
+-- A longer description of the package.
+-- description:
+homepage:
+
+-- A URL where users can report bugs.
+-- bug-reports:
+license:            MIT
+license-file:       LICENSE
+author:             Lev135
+maintainer:         lev_135@mail.ru
+
+-- A copyright notice.
+-- copyright:
+-- category:
+
+executable bidirectional-instances
+    main-is:          Main.hs
+
+    -- Modules included in this executable, other than Main.
+    other-modules:    Example1
+                      Example2
+
+    -- LANGUAGE extensions used by modules in this package.
+    -- other-extensions:
+    build-depends:    base ^>=4.14.3.0
+    hs-source-dirs:   examples
+    default-language: Haskell2010
