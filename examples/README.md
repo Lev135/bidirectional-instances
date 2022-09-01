@@ -1,7 +1,8 @@
 This folder contains solution for example from "Bidirectional type instances"
 by Koen Pauwels, Georgios Karachalias, Michiel Derhaeg and Tom Schrijvers
 (https://arxiv.org/pdf/1906.12242.pdf)
-by means of type families without any new extension.
+by means of type families without any new extension
+and one extra example where only wrapper over standard class is enough.
 
 However, solution seems too boilerplate. 
 It maybe reasonable to realize some extension making this code
