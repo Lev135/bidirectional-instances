@@ -1,3 +1,8 @@
+{-
+  This module contains solution for example from "Bidirectional type instances"
+  by Koen Pauwels, Georgios Karachalias, Michiel Derhaeg and Tom Schrijvers
+  (https://arxiv.org/pdf/1906.12242.pdf)
+-}
 {-# LANGUAGE GADTs #-}
 {-# LANGUAGE TypeFamilies #-}
 {-# LANGUAGE UndecidableInstances #-}
