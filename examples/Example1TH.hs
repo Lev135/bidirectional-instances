@@ -14,8 +14,7 @@
 module Example1TH where
 
 import Data.Kind (Constraint, Type)
-import Control.Bidirectional ( Bidirectional, makeBidirectionalInstances ) 
-import Control.Bidirectional.Class (BidirectionalRec)
+import Control.Bidirectional ( Bidirectional, makeBidirectionalInstances, BidirectionalRec ) 
 
 data Term :: Type -> Type where
   Con :: a -> Term a
