@@ -15,6 +15,7 @@ module Example1TH where
 
 import Data.Kind (Constraint, Type)
 import Control.Bidirectional ( Bidirectional, makeBidirectionalInstances ) 
+import Control.Bidirectional.Class (BidirectionalRec)
 
 data Term :: Type -> Type where
   Con :: a -> Term a
@@ -33,11 +34,11 @@ instance Show a => Show (Term a) where
 
 -- provide instances for which we want bidirectional constraints
 makeBidirectionalInstances [d|
-    instance (Bidirectional Show b, Bidirectional Show c)  => Show (b, c)
+    instance (Show b, Show c)  => Show (b, c)
   |]
 
 -- then the following typechecks
-instance Bidirectional Show a => Show (Term a) where
+instance BidirectionalRec Show a => Show (Term a) where
   show (Con x) = show x
   show (Tup x y) = unwords ["(", show x, ",", show y, ")"]
 

@@ -10,3 +10,6 @@ import Data.Kind (Constraint)
 
 class (c a, Constr c a) => Bidirectional (c :: k -> Constraint) (a :: k) where
   type Constr c a :: Constraint
+
+class (c a, ConstrRec c a) => BidirectionalRec (c :: k -> Constraint) (a :: k) where
+  type ConstrRec c a :: Constraint
