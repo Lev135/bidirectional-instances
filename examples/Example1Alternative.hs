@@ -9,8 +9,11 @@
 {-# LANGUAGE TypeFamilies #-}
 {-# LANGUAGE UndecidableInstances #-}
 {-# LANGUAGE UndecidableSuperClasses #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
+{-# LANGUAGE ConstraintKinds #-}
+{-# LANGUAGE PolyKinds #-}
 
-module Example1 where
+module Example1Alternative where
 
 import Data.Kind (Constraint, Type)
 
@@ -29,18 +32,18 @@ instance Show a => Show (Term a) where
   Some kind of solution using modern haskell without new extensions
 -}
 
--- make a wrapper over standard Show class from Prelude
-class (Show a, ShowC a) => Show' a where
-  type ShowC a :: Constraint
+-- somewhere in 'bidirectional' package
+class (c a, Constr c a) => Bidirectional (c :: k -> Constraint) (a :: k) where
+  type Constr c a :: Constraint
 
 -- provide instances for which we want bidirectional constraints
-instance (Show' b, Show' c) => Show' (b, c) where
-  type ShowC (b, c) = (Show' b, Show' c)
+instance Constr Show (b, c) => Bidirectional Show (b, c) where
+  type Constr Show (b, c) = (Bidirectional Show b, Bidirectional Show c)
 
 -- then the following typechecks
-instance Show' a => Show (Term a) where
+instance Bidirectional Show a => Show (Term a) where
   show (Con x) = show x
   show (Tup x y) = unwords ["(", show x, ",", show y, ")"]
 
--- we can also provide Show' instance for Term, but it isn't necessary,
--- unless we want to have bidirectional constraint for it
+-- of course we can also provide Bidirectional Show instance for Term, but it 
+-- isn't  necessary, unless we want to have bidirectional constraint for it
