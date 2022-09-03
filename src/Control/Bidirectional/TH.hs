@@ -4,6 +4,11 @@ import Language.Haskell.TH (Exp, Q, Dec (InstanceD, ClassD), TypeQ, DecsQ, reify
 import Control.Bidirectional.Class (Bidirectional, BidirectionalRec, Constr, ConstrRec)
 import Control.Monad (join)
 
+decBidirectionalInstances :: Q [Dec] -> Q [Dec]
+decBidirectionalInstances instances = do
+  inst <- instances
+  (inst <>) <$> makeBidirectionalInstances instances
+
 makeBidirectionalInstances :: Q [Dec] -> Q [Dec]
 makeBidirectionalInstances instances = do
   insts <- instances
