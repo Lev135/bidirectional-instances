@@ -25,6 +25,7 @@ executable bidirectional-instances
     other-modules:    Example1
                       Example2
                       Example1Alternative
+                      Example2Alternative
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
