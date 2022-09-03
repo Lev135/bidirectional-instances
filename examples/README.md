@@ -43,3 +43,8 @@ other drawbacks of this changes (maybe efficiency)?
 
 It's also interesting for me, if there were conversations on this topic or even 
 attempts to realize it. Anyway, I'll be happy to discuss it
+
+Upd. There is also another [solution](Example1Alternative.hs) for the example
+from article, that looks much better, if we don't want to change Prelude. Since
+that, I'm not sure if `{-# BIDIRECTIONAL #-}` pragma should be applied to the 
+whole class or just to some instance
