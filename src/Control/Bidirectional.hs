@@ -1,5 +1,6 @@
 module Control.Bidirectional (
   Bidirectional (..),
+  BidirectionalRec (..),
   makeBidirectionalInstances
 )where
 

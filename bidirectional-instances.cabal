@@ -42,6 +42,7 @@ executable examples
                       Example1Alternative
                       Example2Alternative
                       Example1TH
+                      Example2TH
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
