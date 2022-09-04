@@ -10,7 +10,7 @@
   Description:   Base types for bidirectional instances
   Copyright:     Lev Dvorkin (c) 2022
   License:       MIT
-  Maintainer:    sample@email.com
+  Maintainer:    lev_135@mail.ru
   Stability:     experimental
 -}
 module Control.Bidirectional.Class (

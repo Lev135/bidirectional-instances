@@ -1,4 +1,13 @@
 {-# LANGUAGE TemplateHaskell #-}
+
+{- | 
+  Module:        Control.Bidirectional.TH
+  Description:   Template haskell for generating bidirectional instances
+  Copyright:     Lev Dvorkin (c) 2022
+  License:       MIT
+  Maintainer:    lev_135@mail.ru
+  Stability:     experimental
+-}
 module Control.Bidirectional.TH where
 import Language.Haskell.TH (Exp, Q, Dec (InstanceD, ClassD), TypeQ, DecsQ, reify, Info (ClassI), Type (ConT, AppT, TupleT), conT)
 import Control.Bidirectional.Class (Bidirectional, BidirectionalRec, Constr, ConstrRec)
