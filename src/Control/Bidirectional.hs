@@ -78,6 +78,27 @@
   > class (forall s e m e'. Bidirectional (MonadState s) (ExceptT e m) => 
   >   Bidirectional (MonadState s) (ExceptT e' m)) => W'
   > instance W'
+
+  == Interaction with overlapping instances
+  
+  As was mentioned above backward implication is sound only when we have 
+  no overlapping instances for.
+  However, solution from this package /can/ work with overlapping instances,
+  provided that only one of them is selected to use in backward direction.
+  Selected instance should be passed to 
+  `makeBidirectionalInstances`/`decBidirectionalInstances`.
+
+  For example this code is correct:
+
+  > data A a = A a
+  > 
+  > decBidirectionalInstances [d| 
+  >     instance Show a => Show (A a) where
+  >       show (A a) = "A " ++ show a
+  >   |]
+  > 
+  > instance {-# OVERLAPS #-} Show (A Int) where
+  >   show (A a) = "Integral A: " ++ show (toInteger a)
 -}
 module Control.Bidirectional (
   Bidirectional (..),
@@ -86,5 +107,5 @@ module Control.Bidirectional (
   makeBidirectionalInstances
 ) where
 
-import Control.Bidirectional.Class (Bidirectional, BidirectionalRec)
+import Control.Bidirectional.Class (Bidirectional(..), BidirectionalRec(..))
 import Control.Bidirectional.TH (makeBidirectionalInstances, decBidirectionalInstances)

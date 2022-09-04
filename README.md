@@ -28,6 +28,10 @@ Documentation
 Detailed documentation with examples can be found in the main module 
 *(Control.Bidirectional)*.
 
+Usage
+---
+All function and classes you need to work with are exported from 
+`Control.Bidirectional`.
 
 To be implemented somewhere in the future
 ---
