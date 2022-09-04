@@ -38,6 +38,7 @@ To be implemented somewhere in the future
 I'll try to make a GHC plugin to improve this solution in two directions:
 - no need for template haskell
 - more intuitive syntax
+
 More precisely, I'd like to have the following syntax for declaring 
 bidirectional instances:
 ```hs
