@@ -15,6 +15,7 @@ maintainer:         lev_135@mail.ru
 copyright:          Lev Dvorkin (c) 2022
 category:           language
 
+extra-source-files: CHANGELOG.md
 extra-doc-files:    README.md
 
 source-repository head
