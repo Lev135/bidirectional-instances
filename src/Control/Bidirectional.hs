@@ -17,7 +17,7 @@
   instances for @C (Foo a b)@.
 
   === __Example 1: showing @GADT@__
-  Suppose we want to write 'Show' instance for the following GADT type:
+  Suppose we want to write @Show@ instance for the following GADT type:
 
   > data Term :: Type -> Type where
   >   Con :: a -> Term a
@@ -29,14 +29,14 @@
   >   show (Con x) = show x
   >   show (Tup x y) = unwords ["(", show x, ",", show y, ")"]
 
-  fails to typecheck, because in the second equation we apply 'show' function
-  to 'x', so we need 'Show' instance for 'b' (from GADT constructor).
+  fails to typecheck, because in the second equation we apply @show@ function
+  to @x@, so we need @Show@ instance for @b@ (from GADT constructor).
   But we only have @Show a@ where @a ~ (b, c)@. So we need to deduce
   @Show (b, c) => Show b@ and GHC fails to do this. This package provides 
   a solution for this problem:
 
   First of all, we need to make instance @Show (b, c)@ bidirectional.
-  Maybe sometime in the future it will be declared in 'Prelude', but now we
+  Maybe sometime in the future it will be declared in @Prelude@, but now we
   need to make it manually. TH functions from this module can help to reduce
   boilerplate:
 
@@ -54,12 +54,12 @@
 
   Why we need 'BidirectionalRec' constraint, but not simple 'Bidirectional'?
   It's so because we may have nested tuples: @(Tup (Tup x y) z)@ and for showing
-  @(Tup x y)@ we also need bidirectional 'Show' instance. So GHC must infer
+  @(Tup x y)@ we also need bidirectional @Show@ instance. So GHC must infer
   @BidirectionalRec Show (b, c) => BidirectionalRec Show b@ and
   @Bidirectional Show (b, c) => Show b@ is not enough.
 
-  === __Example 2: mapping error type for 'ErrorT' preserving MonadState constraint__
-  Suppose we want to change 'e' type for 'ExceptT' transformer preserving 
+  === __Example 2: mapping error type for @ErrorT@ preserving MonadState constraint__
+  Suppose we want to change @e@ type for @ExceptT@ transformer preserving 
   knowledge of @MonadState s@ instance for composed monad. So we want to infer
   @MonadState s (ExceptT e m) => MonadState s (ExceptT e' m)@.
   Using bidirectional instances it can be done this way:

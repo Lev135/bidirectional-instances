@@ -1,9 +1,10 @@
 cabal-version:      3.0
 name:               bidirectional-instances
 version:            0.1.0.0
-synopsis:           Class for bidirectional instances and TH methods for
-                    generating instances for it
-
+synopsis:           Make instance constraints bidirectional
+description:        This package contains class for bidirectional instances 
+                    and TH methods for generating instances for it.
+                    See /README.md/ for more information
 homepage:           https://github.com/Lev135/bidirectional-instances
 bug-reports:        https://github.com/Lev135/bidirectional-instances/issues
 
@@ -12,7 +13,14 @@ license-file:       LICENSE
 author:             Lev135
 maintainer:         lev_135@mail.ru
 copyright:          Lev Dvorkin (c) 2022
--- category:
+category:           language
+
+extra-doc-files:    README.md
+
+source-repository head
+    type:           git
+    location:       https://github.com/Lev135/bidirectional-instances.git
+
 
 library
     exposed-modules:  Control.Bidirectional
@@ -24,7 +32,8 @@ library
     hs-source-dirs:   src
     default-language: Haskell2010
 
-executable examples
+test-suite examples
+    type:             exitcode-stdio-1.0
     main-is:          Main.hs
 
     other-modules:    Example1
